@@ -1,0 +1,38 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node --require @babel/register index.js",
+    "build": "babel ./ -d ./dist"
+  },
+  "keywords": [
+    "node.js",
+    "express.js",
+    "grafana",
+    "monitoring",
+    "mysql",
+    "prometheus"
+  ],
+  "author": "Güzel Başpınar",
+  "license": "MIT",
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "dotenv": "^16.0.3",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1",
+    "mysql2": "^3.2.1",
+    "prom-client": "^14.2.0",
+    "sequelize": "^6.31.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.21.0",
+    "@babel/core": "^7.21.4",
+    "@babel/plugin-transform-modules-commonjs": "^7.21.2",
+    "@babel/preset-env": "^7.21.4",
+    "@babel/register": "^7.21.0"
+  }
+}

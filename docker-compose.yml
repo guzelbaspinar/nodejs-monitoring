@@ -1,0 +1,69 @@
+version: "3"
+services:
+  mongo:
+    image: mongo
+    volumes:
+      - mongo-data:/data/db
+    ports:
+      - "27017:27017"
+    networks:
+      - app-network
+  
+  mysqldb:
+    image: mysql:oracle
+    cap_add:
+      - SYS_NICE
+    environment:
+      - MYSQL_DATABASE=${SQL_DATABASE}
+      - MYSQL_ROOT_PASSWORD=${SQL_PASSWORD}
+    volumes:
+      - mysql-data:/var/lib/mysql
+    ports:
+      - '${SQL_PORT}:3306'
+    networks:
+      - app-network
+  
+  nodejs_app:
+    build: .
+    environment:
+      - DB_URI=mongodb://mongo:27017/test
+      - SQL_HOST=mysqldb
+      - SQL_DATABASE=${SQL_DATABASE}
+      - SQL_PASSWORD=${SQL_PASSWORD}
+      - SQL_USERNAME=root
+      - SQL_PORT='${SQL_PORT}
+      - PORT=${PORT}
+      - MODE=PROD
+    ports:
+      - "${PORT}:${PORT}"
+    depends_on:
+      - mongo
+      - mysqldb
+      - prometheus
+    networks:
+      - app-network
+
+  prometheus:
+    image: prom/prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    networks:
+      - app-network
+
+  grafana:
+    image: grafana/grafana
+    ports:
+      - "3001:3000"
+    depends_on:
+      - prometheus
+    networks:
+      - app-network
+
+networks:
+  app-network:
+
+volumes:
+  mongo-data:
+  mysql-data:

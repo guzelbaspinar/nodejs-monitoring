@@ -34,7 +34,7 @@ After running this project locally, you can access its REST APIs at `http://loca
 
 ## Monitoring
 
-You can monitor this project through Prometheus and Grafana. Prometheus runs at `http://localhost:9090`, while Grafana runs at `http://localhost:3000`. Additionally, you can find ready-to-use Grafana dashboard templates in the `metrics` folder in the project. You can import these templates into Grafana and use them to monitor the metrics of your Node.js application.
+You can monitor this project through Prometheus and Grafana. Prometheus runs at `http://localhost:9090`, while Grafana runs at `http://localhost:3001`. Additionally, you can find ready-to-use Grafana dashboard templates in the `metrics` folder in the project. You can import these templates into Grafana and use them to monitor the metrics of your Node.js application.
 
 To import a template in Grafana, follow these steps:
 

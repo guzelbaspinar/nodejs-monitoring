@@ -45,6 +45,7 @@ To import a template in Grafana, follow these steps:
 
 After importing the template, you will have a fully functional Grafana dashboard to monitor your Node.js application.
 
+![Grafana Dashboard Example 1](/metrics/metrics.jpg "Grafana Dashboard Example 1")
 
 ## License
 
